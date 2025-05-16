@@ -1,0 +1,167 @@
+.admin-page {
+  min-height: 100vh;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-5);
+}
+
+.add-product-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background-color: var(--color-secondary);
+  color: white;
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.add-product-btn:hover {
+  background-color: var(--color-secondary-dark);
+}
+
+.admin-controls {
+  margin-bottom: var(--spacing-4);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background-color: white;
+  border-radius: 4px;
+  padding: var(--spacing-2) var(--spacing-3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.search-icon {
+  color: var(--color-gray-500);
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.products-table-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.products-table th,
+.products-table td {
+  padding: var(--spacing-3);
+  text-align: left;
+}
+
+.products-table th {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-800);
+  font-weight: 600;
+}
+
+.products-table td {
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.product-image {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.action-buttons {
+  display: flex;
+  gap: var(--spacing-2);
+}
+
+.edit-btn,
+.delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.edit-btn {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.edit-btn:hover {
+  border: 1px solid var(--color-primary-dark);
+  background: white;
+}
+
+.delete-btn {
+  background-color: var(--color-error);
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #DC2626; /* darker red */
+}
+
+.loading-message,
+.error-message {
+  text-align: center;
+  padding: var(--spacing-5);
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+  color: var(--color-error);
+}
+
+.no-products {
+  text-align: center;
+  padding: var(--spacing-5);
+  color: var(--color-gray-600);
+}
+
+@media (max-width: 768px) {
+  .products-table {
+    font-size: 0.9rem;
+  }
+  
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: var(--spacing-1);
+  }
+}
