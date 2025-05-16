@@ -1,14 +1,17 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import { thunk } from 'redux-thunk'
-import rootReducer from './reducers'
 
-// Setup Redux DevTools if available
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+import { configureStore } from '@reduxjs/toolkit';
+import authReducer from './slice/authSlice';
+import productReducer from './reducers/productReducer';
+import cartReducer from './reducers/cartReducer';
+import uiReducer from './reducers/uiReducer';
 
-// Create store with thunk middleware
-const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
-)
+const store = configureStore({
+  reducer: {
+    auth: authReducer,
+    products: productReducer,
+    cart: cartReducer,
+    ui: uiReducer
+  }
+});
 
-export default store
+export default store;

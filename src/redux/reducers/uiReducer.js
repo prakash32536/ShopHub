@@ -1,26 +1,22 @@
-import { START_LOADING, STOP_LOADING } from '../types'
+
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   loading: false
-}
+};
 
-const uiReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case START_LOADING:
-      return {
-        ...state,
-        loading: true
-      }
-      
-    case STOP_LOADING:
-      return {
-        ...state,
-        loading: false
-      }
-      
-    default:
-      return state
+const uiSlice = createSlice({
+  name: 'ui',
+  initialState,
+  reducers: {
+    startLoading: (state) => {
+      state.loading = true;
+    },
+    stopLoading: (state) => {
+      state.loading = false;
+    }
   }
-}
+});
 
-export default uiReducer
+export const { startLoading, stopLoading } = uiSlice.actions;
+export default uiSlice.reducer;

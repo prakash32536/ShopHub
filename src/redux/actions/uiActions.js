@@ -1,9 +1,5 @@
-import { START_LOADING, STOP_LOADING } from '../types'
 
-export const startLoading = () => ({
-  type: START_LOADING
-})
+import { startLoading, stopLoading } from '../reducers/uiReducer';
 
-export const stopLoading = () => ({
-  type: STOP_LOADING
-})
+// Re-export the actions for backward compatibility
+export { startLoading, stopLoading };
