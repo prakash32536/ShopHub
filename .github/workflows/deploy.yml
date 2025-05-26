@@ -1,0 +1,34 @@
+name: Deploy Vite React App
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.9.0
+      with:
+        ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+
+    - name: SSH and Deploy
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
+          # Clone or update project
+          if [ ! -d "vite-react-app" ]; then
+            git clone https://github.com/<your-username>/<your-repo>.git vite-react-app
+          fi
+
+          cd vite-react-app
+          git pull origin main
+
+          docker rm -f vite-react || true
+          docker build -t vite-react .
+          docker run -d -p 3000:80 --name vite-react vite-react
+        EOF
